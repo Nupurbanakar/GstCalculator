@@ -2,17 +2,15 @@ package com.gst.gst_calculator.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "items")
 @AllArgsConstructor
-@NoArgsConstructor
 public class Item {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "name")
@@ -21,9 +19,13 @@ public class Item {
     @Column(name = "price")
     private Double price;
 
-    // @ManyToOne
-    // @JoinColumn(name = "category_id", nullable = false)
-    // private Category category;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+    
+    public Item() {
+
+    }
 
     public Integer getId() {
         return id;
@@ -49,11 +51,11 @@ public class Item {
         this.price = price;
     }
 
-    // public Category getCategory() {
-    // return category;
-    // }
+    public Category getCategory() {
+    return category;
+    }
 
-    // public void setCategory(Category category) {
-    // this.category = category;
-    // }
+    public void setCategory(Category category) {
+    this.category = category;
+    }
 }

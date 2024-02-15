@@ -8,10 +8,14 @@ import com.gst.gst_calculator.models.Item;
 
 @Service
 public class ItemService {
-
-    @Autowired
     private ItemRepository itemRepository;
 
+    @Autowired
+    public ItemService(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
+    }
+
+    @SuppressWarnings("null")
     public Item createItem(Item item) {
         return itemRepository.save(item);
     }

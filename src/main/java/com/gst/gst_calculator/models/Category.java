@@ -1,18 +1,20 @@
 package com.gst.gst_calculator.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "categories")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name="name")
     private String name;
 
-    @Column(nullable = false)
+    @Column(name="gst_rate")
     private Double gstRate;
 
     public Long getId() {

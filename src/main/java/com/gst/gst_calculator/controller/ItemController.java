@@ -12,14 +12,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/items")
 public class ItemController {
+    private ItemService itemService;
 
     @Autowired
-    private ItemService itemService;
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
+    }
 
     @PostMapping
     public ResponseEntity<Item> createItem(@RequestBody Item item) {
         Item createdItem = itemService.createItem(item);
-        return new ResponseEntity<>(createdItem, HttpStatus.CREATED);
+        return new ResponseEntity<Item>(createdItem, HttpStatus.CREATED);
     }
 }
 
