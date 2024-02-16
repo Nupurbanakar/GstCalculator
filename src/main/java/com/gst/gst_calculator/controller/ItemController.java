@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/items")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ItemController {
     private ItemService itemService;
 
